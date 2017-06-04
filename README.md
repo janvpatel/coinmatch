@@ -1,2 +1,2 @@
-# coinmatch
-Coin matching game developed using javascript, html, and css.
+# Coin Match
+Coin matching game developed using JavaScript, HTML, CSS, and jQuery.
