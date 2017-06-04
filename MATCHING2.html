@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<title>COIN MATCHING</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link href='https://fonts.googleapis.com/css?family=Bangers|Chewy' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="game_style.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+var correctCards = 0;
+$( init );
+
+function init() {
+
+
+// Hide the success message
+$('#successMessage').hide();
+$('#successMessage').css( {
+height:0,
+} );
+
+// Reset the game
+correctCards = 0;
+$('#cardPile').html( '' );
+$('#cardSlots').html( '' );
+
+// Create the pile of shuffled cards
+var numbers = [ 1, 2, 3, 4, 5, 6 ];
+var coins = ['<img src="https://68.media.tumblr.com/18dbb87139b8bef0aeaab875bc08b100/tumblr_o8b4qnYjx31qi7le7o3_75sq.png" width="60">',
+'<img src="https://68.media.tumblr.com/96a1945fd0ee69adab53ec865ac0932d/tumblr_o8b4qnYjx31qi7le7o2_75sq.png" width="65">',
+'<img src="https://68.media.tumblr.com/58bd3327ae9146984cc770bc9869480e/tumblr_o8b4qnYjx31qi7le7o1_75sq.png" width="55">',
+'<img src="https://68.media.tumblr.com/2bf1c743f9d01dede0152abd259d777c/tumblr_o8b4qnYjx31qi7le7o4_75sq.png" width="85">',
+'<img src="https://68.media.tumblr.com/727e4b9ec423ca7c41c7d588a7767c02/tumblr_o8b4qnYjx31qi7le7o6_100.png" width="93">',
+'<img src="https://68.media.tumblr.com/aa994c68144f5cb1fb9d5a0e19c36430/tumblr_o8b4qnYjx31qi7le7o5_100.png" width="100">'];
+
+
+numbers.sort( function() { return Math.random() - .5 } );
+
+for ( var i=0; i<6; i++ ) {
+var value = numbers[i]-1;
+$('<div>'+coins[value]+'</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+containment: '#content',
+stack: '#cardPile div',
+cursor: 'move',
+revert: true
+} );
+}
+
+// Create the card slots
+var slotnumber = [ 1, 2, 3, 4, 5, 6 ];
+slotnumber.sort( function() { return Math.random() - .5 } );
+var words = [ 'penny', 'nickel', 'dime', 'quarter', 'loonie', 'toonie'];
+var values = [ '1&cent;', '5&cent;', '10&cent;', '25&cent;', '$1', '$2'];
+var mix = [['penny','1&cent;'],['nickel','5&cent;'],['dime','10&cent;'],['quarter','25&cent;'], ['loonie','$1'], ['toonie','$2']];
+
+for ( var i=0; i<=6; i++ ) {
+var value = slotnumber[i]-1;
+var subvalue = Math.floor((Math.random() * 2));
+$('<div>' + mix[value][subvalue] + '</div>').data( 'number', slotnumber[i] ).attr('id', 'card'+ numbers[i] ).appendTo( '#cardSlots' ).droppable( {
+accept: '#cardPile div',
+hoverClass: 'hovered',
+drop: handleCardDrop
+} );
+}
+
+}
+function handleCardDrop( event, ui ) {
+var slotNumber = $(this).data( 'number' );
+var cardNumber = ui.draggable.data( 'number' );
+
+// If the card was dropped to the correct slot,
+// change the card colour, position it directly
+// on top of the slot, and prevent it being dragged
+// again
+
+if ( slotNumber == cardNumber ) {
+ui.draggable.addClass( 'correct' );
+ui.draggable.draggable( 'disable' );
+$(this).droppable( 'disable' );
+ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+ui.draggable.draggable( 'option', 'revert', false );
+correctCards++;
+}
+
+// If all the cards have been placed correctly then display a message
+// and reset the cards for another go
+
+if ( correctCards == 6 ) {
+$('#successMessage').show();
+$('#successMessage').animate( {
+height:'150px',
+opacity: 1
+} );
+}
+
+}
+
+
+</script>
+
+</head>
+<body>
+<audio autoplay loop>
+  <source src="bg.mp3" type="audio/mpeg">
+
+</audio>
+<div class="header"><div class="title"> COIN COUNTING</div></div>
+
+
+<div id="content">
+
+<div id="cardPile"> </div>
+<h1 style="margin-top: 40px;">LEVEL 2</h1>
+
+<div id="cardSlots"> </div>
+
+<div id="successMessage">
+<h2>You did it!</h2>
+
+<div id="img"><img src="http://images.clipartpanda.com/cute-sun-clipart-happy-sun-md.png" width="100"><br><br></div>
+<button onclick="init()">Play Again</button>
+<button><a href="matching3.html">Level 3</button>
+<div id="img2" style="float: right;"><img src="http://images.clipartpanda.com/cute-sun-clipart-happy-sun-md.png" width="100"><br><br></div>
+
+</div>
+
+</div>
+
+</body>
+</html>

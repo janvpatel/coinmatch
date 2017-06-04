@@ -1,0 +1,200 @@
+body {
+	font-family: 'Chewy', cursive;
+	letter-spacing: 2px;
+	line-height: 1.8em;
+	color: #000;
+	text-transform: uppercase;
+	background-color: #FF920F;
+	background: url('https://images3.alphacoders.com/221/221065.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	cursor: url(http://cur.cursors-4u.net/games/gam-4/gam308.cur), progress !important;
+}
+
+a, a:visited, a:hover, a:active, button:hover{
+	text-decoration:none;
+	outline: none;
+	color: white;
+	cursor: url(http://cur.cursors-4u.net/games/gam-4/gam307.png), progress !important;
+}
+
+
+h1, h2, h3, h4 {
+	font-family: 'chewy';
+	font-weight: bold;
+	letter-spacing: 5px;
+}
+
+/* Main content area */
+
+#content {
+	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	margin-top: 70px;
+	height: 100%;
+	padding: 20px;
+}
+
+.title {
+	line-height: 100px;
+	font-size: 30px;
+	letter-spacing: 5px;
+
+}
+
+/* Header/footer boxes */
+
+.header {
+	clear: both;
+	text-align: center;
+	width:auto;
+	margin:auto;
+	height:100px;
+	width: 99%;
+	background-color: #514039;
+	border: 5px solid #fff;
+	color:white;
+}
+
+
+/* Slots for final card positions */
+
+#cardSlots {
+	margin: 50px auto 0 auto;
+	background: #933A96;
+}
+
+/* The initial pile of unsorted cards */
+
+#cardPile {
+	margin: 0 auto;
+}
+
+#cardSlots, #cardPile {
+	width: 810px;
+	height:150px;
+	padding: 20px;
+	left:50%;
+	border: 5px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 20px;
+	text-transform: upper-case;
+	background: rgba(185, 146, 244, 0.8);
+	box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+	line-height: 90px;
+}
+
+/* Individual cards and slots */
+
+
+#cardPile div, #cardSlots div {
+	float:left;
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+	padding-top: 20px;
+	margin: 0 0 0 10px;
+	background: #FDE74C;
+	border: 3px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+
+#cardSlots div:first-child, #cardPile div:first-child {
+	margin-left: 0;
+}
+
+#cardSlots div.hovered {
+	background: #514039;
+	color:white;
+}
+
+#cardSlots div {
+	box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+
+#cardPile div.ui-draggable-dragging {
+	background-color: #FF3C3C;
+	-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+	box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+#cardPile div:hover{
+	background-color: #88EDE8;
+	box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
+	cursor: url(http://cur.cursors-4u.net/games/gam-4/gam307.png), progress !important;
+}
+
+/* Individually coloured cards */
+
+#card1.correct { background: #C3E825; }
+#card2.correct { background: #C3E825; }
+#card3.correct { background: #C3E825; }
+#card4.correct { background: #C3E825; }
+#card5.correct { background: #C3E825; }
+#card6.correct { background: #C3E825; }
+
+#successMessage {
+	position: absolute;
+	margin: auto;
+	height: 150px;
+	z-index: 100;
+	color: white;
+	background: #61D7FF;
+	border: 5px solid white;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+	padding: 30px;
+	box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+	font-size: 18px;
+	left:50%;
+	margin-left: -430px;
+	top: 50%;
+	margin-top: -125px;
+	width: 810px;
+}
+
+button {
+	background-color:#D62872;
+	color: white;
+	letter-spacing:5px;
+	outline: none;
+	border: 0px;
+	margin-top: 15px;
+	padding:10px;
+	border-radius: 10px;
+	font-size: 16px;
+	text-transform: uppercase;
+	border: 3px solid #fff;
+	font-family: "chewy";
+}
+
+button:hover{
+	background-color: #FFB001;
+}
+
+button:focus {
+	outline: 0;
+	}
+
+#img {
+	position: absolute;
+	margin-top: -55px;
+	margin-left: 100px;
+}
+
+#img2 {
+	position: absolute;
+	margin-top: -116px;
+	margin-left: 610px;
+}
